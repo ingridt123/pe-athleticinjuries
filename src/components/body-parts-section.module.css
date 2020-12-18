@@ -1,0 +1,16 @@
+img, p {
+    margin-bottom: 0.5px;
+}
+
+.exerciseContainer {
+    width: 280px;
+    max-width: 100%;
+    display: inline-block;
+    padding: 8px;
+    margin-bottom: 5px;
+    vertical-align: top;
+}
+
+.exerciseTitle {
+    font-weight: bold;
+}

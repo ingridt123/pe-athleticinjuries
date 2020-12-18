@@ -1,0 +1,35 @@
+#container {
+    margin: 2rem;
+    padding: 0 1rem;
+}
+
+#header {
+    margin-bottom: 1.5rem;
+}
+
+#headerLink {
+    text-shadow: none;
+    background-image: none;
+}
+
+#headerHeading {
+    display: inline;
+}
+
+.dropdown {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.dropdown:last-child {
+    margin-right: 10px;
+}
+
+.dropdown div a:first-child {
+    margin-top: 5px;
+}
+
+.dropdown div a {
+    display: block;
+    padding-left: 4px;
+}

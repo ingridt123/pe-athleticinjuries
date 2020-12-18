@@ -1,0 +1,32 @@
+/* TODO: top/bottom for responsive */
+.column {
+    float: left;
+    width: 50%;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.listLink:first-child {
+    margin-top: 15px;
+}
+
+.listLink {
+    margin: 5px 0;
+}
+
+.anatomy {
+    display: block;
+    margin: auto;
+    /* max-height: 400px; */
+}
+
+.source{
+    text-align: center;
+    font-size: 8px;
+    display: block;
+    margin: auto;
+}
