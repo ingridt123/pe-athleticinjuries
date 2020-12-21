@@ -2,9 +2,10 @@ import React from 'react'
 import Layout from '../components/layout'
 import { Link, graphql } from "gatsby"
 
+import SEO from "../components/seo"
 import ImageMapper from "../components/image-mapper"
 import styles from "./index.module.css"
-import musculoskeletal from "../img/musculoskeletal.png"
+import musculoskeletal from "../images/musculoskeletal.png"
 
 // home page
 // anatomy with highlightable links to other pages
@@ -41,6 +42,7 @@ export default function Home({ data }) {
 
     return (
         <Layout>
+            <SEO title="Home" description={data.site.siteMetadata.description} />
             <h1>Home</h1>
             <div className={styles.row}>
                 <div className={styles.column}>
@@ -70,6 +72,7 @@ export const query = graphql`
         site {
             siteMetadata {
                 title
+                description
             }
         }
     }

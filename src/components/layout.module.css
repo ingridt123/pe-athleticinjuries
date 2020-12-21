@@ -17,6 +17,13 @@
     background-image: none;
 }
 
+#headerIcon {
+    height: 30px;
+    vertical-align: bottom;
+    margin-bottom: 0;
+    margin-right: 8px;
+}
+
 #headerHeading {
     display: inline;
 }
@@ -67,6 +74,7 @@
 #mobileMenu_icon {
     display: none;
     cursor: pointer;
+    margin-top: 4px;
 }
 
 #mobileMenu {

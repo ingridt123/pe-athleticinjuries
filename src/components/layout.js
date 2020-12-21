@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { DropdownButton, Dropdown } from 'react-bootstrap'
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { FaBars } from "@react-icons/all-files/fa/FaBars"
@@ -6,6 +6,7 @@ import { FaTimes } from "@react-icons/all-files/fa/FaTimes"
 import { FaCaretDown } from "@react-icons/all-files/fa/FaCaretDown"
 
 import styles from "./layout.module.css"
+import favicon from "../images/icon.png"
 
 // container with header
 // title
@@ -114,6 +115,7 @@ export default function Layout({ children }) {
         <div id={styles.container}>
             <header id={styles.header}>
                 <Link to="/" id={styles.headerLink}>
+                    <img id={styles.headerIcon} src={favicon} alt="Header icon" />
                     <h3 id={styles.headerHeading}>{data.site.siteMetadata.title}</h3>
                 </Link>
                 {/* DESKTOP VERSION */}
@@ -155,7 +157,7 @@ export default function Layout({ children }) {
                         })}
                     </DropdownButton>
                 </ul>
-                {/* MOBILE VERSION */}
+                {/* MOBILE VERSION (Inspired by https://www.youtube.com/watch?v=T2MhVxJxsL0) */}
                 <div id={styles.mobileMenu_icon} onClick={handleMobileMenu.bind(this)}>
                     {!mobileMenu ? <FaBars /> : <FaTimes />}
                 </div>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import SEO from "../components/seo"
 import Layout from '../components/layout'
 import ExercisesSection from '../components/exercises-section'
 
@@ -13,6 +14,7 @@ export default function BodyParts({ data }) {
     const bodyPart = data.bodyPart;
     return (
         <Layout>
+            <SEO title={bodyPart.fields.title} description={bodyPart.description} />
             <div>
                 <h1>{bodyPart.fields.title}</h1>
                 <p>{bodyPart.description}</p>

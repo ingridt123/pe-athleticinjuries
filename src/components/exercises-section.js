@@ -5,7 +5,7 @@ import styles from "./exercises-section.module.css"
 // TODO: use react-gif-player
 const Exercise = ({ title, gif, description }) => (
     <div className={styles.exerciseContainer}>
-        <img src={gif} alt="" className={styles.exerciseGif} />
+        <img src={gif} alt={title} className={styles.exerciseGif} />
         <div>
             <p className={styles.exerciseTitle}>{title}</p>
             <p className={styles.exerciseDescription}>{description}</p>

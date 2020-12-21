@@ -3,11 +3,10 @@ require('dotenv').config({ path: '.env' })
 module.exports = {
   siteMetadata: {
     title: `Preventing Athletic Injuries`,
-    description: ``,
+    description: `A website to help everyone prevent athletic injuries!`,
     author: `Ingrid`,
   },
   plugins: [
-    `gatsby-plugin-offline`,
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-typography`,
@@ -23,10 +22,24 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `GatsbyJS`,
+        short_name: `GatsbyJS`,
+        start_url: `/`,
+        background_color: `#f0f5ff`,
+        theme_color: `#f0f5ff`,
+        // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
+        // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
+        display: `standalone`,
+        icon: `src/images/icon.png`,
+      },
+    },
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`,
+    {
       resolve: `@martinreiche/gatsby-firestore`,
       options: {
-        // credential or appConfig
-        // credential: require(`./credentials.json`),
         appConfig: {
           apiKey: process.env.GATSBY_FIREBASE_APIKEY,
           authDomain: process.env.GATSBY_FIREBASE_AUTHDOMAIN,

@@ -10,14 +10,16 @@ export default function ImageMapper(props) {
         newWidth = props.orgWidth * (props.height / props.orgHeight);
         newHeight = props.height;
     }
-    if (newWidth > window.width) {
-        newWidth = window.width;
-        newHeight = props.orgHeight * (window.width / props.orgWidth);
+    if (typeof window !== `undefined`) {
+        if (newWidth > window.width) {
+            newWidth = window.width;
+            newHeight = props.orgHeight * (window.width / props.orgWidth);
+        }
     }
 
     const canvasRef = useRef(null);
     let context;
-    
+
     // Source: https://github.com/coldiary/react-image-mapper/blob/master/src/ImageMapper.js
     function hoverOn(coords) {
         context = canvasRef.current.getContext('2d');

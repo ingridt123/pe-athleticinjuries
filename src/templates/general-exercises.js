@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import SEO from "../components/seo"
 import Layout from '../components/layout'
 import ExercisesSection from '../components/exercises-section'
 
@@ -8,6 +9,7 @@ export default function GeneralExercises({ data }) {
     const generalExercises = data.general;
     return (
         <Layout>
+            <SEO title={generalExercises.fields.title} description={generalExercises.description} />
             <div>
                 <h1>{generalExercises.fields.title}</h1>
                 <p>{generalExercises.description}</p>

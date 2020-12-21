@@ -7,3 +7,5 @@ const typography = new Typography(grandViewTheme)
 
 export const { scale, rhythm, options } = typography
 export default typography
+
+// https://kyleamathews.github.io/typography.js/
