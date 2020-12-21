@@ -2,9 +2,18 @@ const path = require(`path`)
 
 exports.onCreateNode = ({ node, actions }) => {
     const { createNodeField } = actions
-    if (node.internal.type === `BodyPart`) {
-        let title = node.id.slice(node.id.indexOf('-')+1);
-        title = title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+    if (node.internal.type === `BodyPart` || node.internal.type === `General`) {
+        let title = node.id.split('-');
+        if (node.internal.type === `BodyPart`) {
+            title.shift();
+        }
+        for (let i = 0; i < title.length; i++) {
+            if (title[i] !== `and`) {
+                title[i] = title[i].charAt(0).toUpperCase() + title[i].slice(1).toLowerCase();
+            }
+        }
+        title = title.join(' ');
+
         createNodeField({
             node,
             name: `slug`,
@@ -20,7 +29,7 @@ exports.onCreateNode = ({ node, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
-    const result = await graphql(`
+    const result1 = await graphql(`
         query {
             allBodyPart(sort: {fields: fields___slug}) {
                 edges {
@@ -34,10 +43,34 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     `)
 
-    result.data.allBodyPart.edges.forEach(({ node }) => {
+    const result2 = await graphql(`
+        query {
+            allGeneral(sort: {fields: fields___slug}) {
+                edges {
+                    node {
+                        fields {
+                            slug
+                        }
+                    }
+                }
+            }
+        }
+    `)
+
+    result1.data.allBodyPart.edges.forEach(({ node }) => {
         createPage({
             path: node.fields.slug,
             component: path.resolve(`./src/templates/body-parts.js`),
+            context: {
+                slug: node.fields.slug,
+            }
+        })
+    })
+
+    result2.data.allGeneral.edges.forEach(({ node }) => {
+        createPage({
+            path: node.fields.slug,
+            component: path.resolve(`./src/templates/general-exercises.js`),
             context: {
                 slug: node.fields.slug,
             }

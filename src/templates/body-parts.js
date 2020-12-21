@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
-import BodyPartsSection from '../components/body-parts-section'
+import ExercisesSection from '../components/exercises-section'
 
 // template for body part pages
 // TODO side bar to jump to headings
@@ -16,9 +16,9 @@ export default function BodyParts({ data }) {
             <div>
                 <h1>{bodyPart.fields.title}</h1>
                 <p>{bodyPart.description}</p>
-                <BodyPartsSection headerText="Myofascial Release" exercises={bodyPart.childrenExerciseMyofascial} />
-                <BodyPartsSection headerText="Stretching" exercises={bodyPart.childrenExerciseStretching} />
-                <BodyPartsSection headerText="Strengthening" exercises={bodyPart.childrenExerciseStrengthening} />
+                <ExercisesSection headerText="Myofascial Release" exercises={bodyPart.childrenExerciseMyofascial} />
+                <ExercisesSection headerText="Stretching" exercises={bodyPart.childrenExerciseStretching} />
+                <ExercisesSection headerText="Strengthening" exercises={bodyPart.childrenExerciseStrengthening} />
             </div>
         </Layout>
     )

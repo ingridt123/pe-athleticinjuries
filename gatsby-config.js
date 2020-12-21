@@ -24,10 +24,9 @@ module.exports = {
     },
     {
       resolve: `@martinreiche/gatsby-firestore`,
-      // resolve: 'gatsby-source-firestore',
       options: {
         // credential or appConfig
-        credential: require(`./credentials.json`),
+        // credential: require(`./credentials.json`),
         appConfig: {
           apiKey: process.env.GATSBY_FIREBASE_APIKEY,
           authDomain: process.env.GATSBY_FIREBASE_AUTHDOMAIN,
@@ -75,6 +74,33 @@ module.exports = {
               },
             ],
           },
+          {
+            type: `General`,
+            collection: `general`,
+            map: doc => ({
+              description: doc.description,
+            }),
+            subCollections: [
+              {
+                type: `ExerciseUpper`,
+                collection: `upper`,
+                map: doc => ({
+                  title: doc.title,
+                  gifUrl: doc.gifUrl,
+                  description: doc.description,
+                })
+              },
+              {
+                type: `ExerciseLower`,
+                collection: `lower`,
+                map: doc => ({
+                  title: doc.title,
+                  gifUrl: doc.gifUrl,
+                  description: doc.description,
+                })
+              },
+            ]
+          }
         ],
       },
     },

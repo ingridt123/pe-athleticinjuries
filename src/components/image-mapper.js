@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef } from 'react'
 
 import styles from "./image-mapper.module.css"
 
@@ -17,9 +17,11 @@ export default function ImageMapper(props) {
 
     const canvasRef = useRef(null);
     let context;
-
+    
     // Source: https://github.com/coldiary/react-image-mapper/blob/master/src/ImageMapper.js
     function hoverOn(coords) {
+        context = canvasRef.current.getContext('2d');
+
         let fillColor = props.fillColor || "rgba(255, 255, 255, 0.5)";
         let lineWidth = props.lineWidth || 1;
         let strokeColor = props.strokeColor || "rgba(0, 0, 0, 0.5)";
@@ -33,12 +35,13 @@ export default function ImageMapper(props) {
     }
 
     function hoverOff() {
+        context = canvasRef.current.getContext('2d');
         context.clearRect(0, 0, context.canvas.width, context.canvas.height);
     }
 
-    useEffect(() => {
-        context = canvasRef.current.getContext('2d');
-    }, [])
+    // useEffect(() => {
+    //     // context = canvasRef.current.getContext('2d');
+    // }, [])
 
     return (
         <div className={styles.container}>
@@ -53,14 +56,14 @@ export default function ImageMapper(props) {
                     className={styles.canvas}
             />
             <map name={props.name}>
-                {props.map.areas.map( a => {
+                {props.map.areas.map( (a, index) => {
                     for (let i = 0; i < a.coords.length; i++) {
                         a.coords[i] *= (newHeight / props.orgHeight);
                     }
-                    return <area alt={a.name} title={a.name} href={a.href} 
+                    return <area alt={a.name} title={a.name} href={a.href} key={index}
                                  coords={a.coords} shape={a.shape}
-                                 onMouseEnter={hoverOn.bind(canvasRef, a.coords)}
-                                 onMouseLeave={hoverOff.bind(canvasRef)} />
+                                 onMouseEnter={hoverOn.bind(this, a.coords)}
+                                 onMouseLeave={hoverOff.bind(this)} />
                 })}
             </map>
         </div>

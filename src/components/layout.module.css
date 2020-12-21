@@ -16,6 +16,25 @@
     display: inline;
 }
 
+#dropdowns {
+    list-style: none;
+    float: right;
+    /* background-color: #1865ff; */
+}
+
+#dropdowns button {
+    /* color: white;
+    background-color: #1865ff;
+    border-color:#1865ff; */
+    /* border-style: solid; */
+    /* border-radius: 3px; */
+}
+
+#dropdowns button:hover {
+    /* background-color: #7aa7ff;
+    border-color:#7aa7ff; */
+}
+
 .dropdown {
     margin: 0 5px;
     display: inline-block;
@@ -27,6 +46,10 @@
 
 .dropdown div a:first-child {
     margin-top: 5px;
+}
+
+.dropdown div {
+    z-index: 5;
 }
 
 .dropdown div a {

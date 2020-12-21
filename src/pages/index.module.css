@@ -10,6 +10,11 @@
     clear: both;
 }
 
+.listLinks {
+    list-style: none;
+    margin-bottom: 0;
+}
+
 .listLink:first-child {
     margin-top: 15px;
 }
@@ -18,10 +23,8 @@
     margin: 5px 0;
 }
 
-.anatomy {
-    display: block;
-    margin: auto;
-    /* max-height: 400px; */
+.listLink:last-child {
+    margin-bottom: 15px;
 }
 
 .source{
