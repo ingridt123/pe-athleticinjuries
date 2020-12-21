@@ -5,3 +5,7 @@
 html {
     background-color: var(--primary);
 }
+
+h1 {
+    margin-top: 2rem;
+}

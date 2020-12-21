@@ -26,6 +26,7 @@
 
 #headerHeading {
     display: inline;
+    margin-right: 30px;
 }
 
 #dropdowns {
@@ -74,7 +75,10 @@
 #mobileMenu_icon {
     display: none;
     cursor: pointer;
-    margin-top: 4px;
+    /* margin-top: 4px; */
+    position: absolute;
+    top: 35px;
+    right: 40px;
 }
 
 #mobileMenu {
@@ -114,11 +118,14 @@
 
     #dropdownsMobile {
         list-style: none;
+        margin: 0
     }
 
     .dropdownMobile_header {
         cursor: pointer;
         width: 100%;
+        margin: 2rem 0 0 0;
+        padding: 20px 0;
     }
     
     .dropdownMobile_header:hover {

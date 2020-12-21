@@ -6,6 +6,7 @@ module.exports = {
     description: `A website to help everyone prevent athletic injuries!`,
     author: `Ingrid`,
   },
+  pathPrefix: "/pe-athleticinjuries",
   plugins: [
     `gatsby-plugin-sharp`,
     {
