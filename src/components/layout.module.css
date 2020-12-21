@@ -1,3 +1,8 @@
+:root {
+    --primary: #f0f5ff;
+    --hover: hsla(0,0%,0%,0.8);
+}
+
 #container {
     margin: 2rem;
     padding: 0 1rem;
@@ -55,4 +60,60 @@
 .dropdown div a {
     display: block;
     padding-left: 4px;
+}
+
+/* MOBILE MENU */
+
+#mobileMenu_icon {
+    display: none;
+    cursor: pointer;
+}
+
+#mobileMenu {
+    display: none;
+}
+
+.dropdownMobile {
+    display: block;
+}
+
+.dropdownMobile_hide {
+    display: none;
+}
+
+@media screen and (max-width: 780px) {
+    #dropdowns .dropdown {
+        display: none;
+    }
+
+    #mobileMenu_icon {
+        display: block;
+        float: right;
+        font-size: 20px;
+    }
+
+    #mobileMenu {
+        background-color: var(--primary);
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 10;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    #dropdownsMobile {
+        list-style: none;
+    }
+
+    .dropdownMobile_header {
+        cursor: pointer;
+        width: 100%;
+    }
+    
+    .dropdownMobile_header:hover {
+        color: var(--hover);
+    }
 }

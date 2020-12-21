@@ -7,8 +7,15 @@ img, p {
     max-width: 100%;
     display: inline-block;
     padding: 8px;
-    margin-bottom: 5px;
+    margin: 5px 0;
     vertical-align: top;
+}
+
+/* TODO: variable? */
+@media screen and (max-width: 780px) {
+    .exerciseContainer {
+        width: 100%;
+    }
 }
 
 .exerciseTitle {
