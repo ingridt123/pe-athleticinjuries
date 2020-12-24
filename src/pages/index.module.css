@@ -34,7 +34,7 @@
     margin: auto;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 850px) {
     .column {
         width: 100%;
         margin-bottom: 10px;

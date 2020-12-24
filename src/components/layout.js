@@ -125,9 +125,9 @@ export default function Layout({ children }) {
                                     onMouseLeave={hoverOff.bind(this)}
                                     show={dropdown === dropdownTitles[0]}>
                         {generalPages.map( gp => {
-                            return <Dropdown.Item href={gp.href} key={gp.title}>
+                            return <Link to={gp.href} key={gp.title} show={dropdown === dropdownTitles[0]}>
                                         {gp.title}
-                                    </Dropdown.Item>
+                                    </Link>
                         })}
                     </DropdownButton>
                     <DropdownButton title="Upper Body" className={styles.dropdown}
@@ -136,9 +136,9 @@ export default function Layout({ children }) {
                                     show={dropdown === dropdownTitles[1]}>
                         {data.allBodyPart.edges.map( bp => {
                             if (bp.node.type === "upper") {
-                                return <Dropdown.Item href={"/" + bp.node.id} key={bp.node.id}>
+                                return <Link to={"/" + bp.node.id} key={bp.node.id} show={dropdown === dropdownTitles[2]}>
                                             {bp.node.fields.title}
-                                        </Dropdown.Item>
+                                       </Link>
                             }
                             return <></>
                         })}
@@ -149,9 +149,9 @@ export default function Layout({ children }) {
                                     show={dropdown === dropdownTitles[2]}>
                         {data.allBodyPart.edges.map( bp => {
                             if (bp.node.type === "lower") {
-                                return <Dropdown.Item href={"/" + bp.node.id} key={bp.node.id}>
+                                return <Link to={"/" + bp.node.id} key={bp.node.id} show={dropdown === dropdownTitles[1]}>
                                             {bp.node.fields.title}
-                                        </Dropdown.Item>
+                                       </Link>
                             }
                             return <></>
                         })}
@@ -170,11 +170,11 @@ export default function Layout({ children }) {
                                 General <FaCaretDown />
                             </h3>
                                 {generalPages.map( gp => {
-                                        return <a href={gp.href} key={gp.title} 
+                                        return <Link to={gp.href} key={gp.title} 
                                                 className={mobileMenuDropdown === dropdownTitles[0] ? styles.dropdownMobile : styles.dropdownMobile_hide}
                                                 onClick={closeMobileMenu.bind(this)}>
                                                     {gp.title}
-                                                </a>
+                                                </Link>
                                 })}
                         </li>
                         <li>
@@ -183,10 +183,10 @@ export default function Layout({ children }) {
                             </h3>
                                 {data.allBodyPart.edges.map( bp => {
                                     if (bp.node.type === "upper") {
-                                        return <a href={"/" + bp.node.id} key={bp.node.id}
+                                        return <Link to={"/" + bp.node.id} key={bp.node.id}
                                                 className={mobileMenuDropdown === dropdownTitles[1] ? styles.dropdownMobile : styles.dropdownMobile_hide}>
                                                     {bp.node.fields.title}
-                                                </a>
+                                                </Link>
                                     }
                                     return <></>
                                 })}
@@ -197,10 +197,10 @@ export default function Layout({ children }) {
                             </h3>
                                 {data.allBodyPart.edges.map( bp => {
                                     if (bp.node.type === "lower") {
-                                        return <a href={"/" + bp.node.id} key={bp.node.id}
+                                        return <Link to={"/" + bp.node.id} key={bp.node.id}
                                                 className={mobileMenuDropdown === dropdownTitles[2] ? styles.dropdownMobile : styles.dropdownMobile_hide}>
                                                     {bp.node.fields.title}
-                                                </a>
+                                                </Link>
                                     }
                                     return <></>
                                 })}

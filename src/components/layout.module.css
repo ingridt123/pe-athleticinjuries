@@ -57,13 +57,23 @@
     margin-right: 10px;
 }
 
-.dropdown div a:first-child {
-    margin-top: 5px;
+.dropdown button {
+    min-width: 100px;
+    margin-bottom: 2px;
 }
 
 .dropdown div {
     z-index: 5;
+    background-color: rgba(255, 255, 255);
+    padding: 5px 10px;
+    border: 1px solid rgba(0,0,0,.05);
+    border-radius: 3px;
+    min-width: 150px;
 }
+
+/* .dropdown div a:first-child {
+    margin-top: 5px;
+} */
 
 .dropdown div a {
     display: block;
@@ -93,7 +103,7 @@
     display: none;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 850px) {
     #dropdowns .dropdown {
         display: none;
     }

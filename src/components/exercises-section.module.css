@@ -12,7 +12,7 @@ img, p {
 }
 
 /* TODO: variable? */
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 850px) {
     .exerciseContainer {
         width: 100%;
     }
