@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import { Link } from 'gatsby'
 
 import styles from "./image-mapper.module.css"
 
@@ -62,10 +63,13 @@ export default function ImageMapper(props) {
                     for (let i = 0; i < a.coords.length; i++) {
                         a.coords[i] *= (newHeight / props.orgHeight);
                     }
-                    return <area alt={a.name} title={a.name} href={a.href} key={index}
+                    return <Link to={a.href}>
+                                <area alt={a.name} title={a.name}
+                                // key={index}
                                  coords={a.coords} shape={a.shape}
                                  onMouseEnter={hoverOn.bind(this, a.coords)}
                                  onMouseLeave={hoverOff.bind(this)} />
+                            </Link>
                 })}
             </map>
         </div>

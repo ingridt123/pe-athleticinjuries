@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/layout'
-import { Link, graphql } from "gatsby"
+import { Link, graphql } from 'gatsby'
 
 import SEO from "../components/seo"
 import ImageMapper from "../components/image-mapper"
@@ -55,6 +55,8 @@ export default function Home({ data }) {
                         <ListLink to="/cool-down">Cool Down</ListLink>
                     </ul>
                     <p>Credit to CMS athletic trainers.</p>
+                    <br />
+                    <p>NOTE: Please make sure that if any of these exercises cause pain or discomfort to discontinue that activity and seek professional help for proper instructions on the movement.</p>
                 </div>
                 <div className={styles.column}>
                     <ImageMapper src={musculoskeletal} map={ANATOMY_MAP} name="anatomy-map" orgWidth={382} orgHeight={737} height={400}/>

@@ -35,16 +35,19 @@ export const query = graphql`
             }
             childrenExerciseMyofascial {
                 title
+                stillUrl
                 gifUrl
                 description
             }
             childrenExerciseStretching {
                 title
+                stillUrl
                 gifUrl
                 description
             }
             childrenExerciseStrengthening {
                 title
+                stillUrl
                 gifUrl
                 description
             }

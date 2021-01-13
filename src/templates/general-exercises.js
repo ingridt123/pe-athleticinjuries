@@ -7,14 +7,29 @@ import ExercisesSection from '../components/exercises-section'
 
 export default function GeneralExercises({ data }) {
     const generalExercises = data.general;
+
+    let upperBody = [];
+    let lowerBody = [];
+    let fullBody = [];
+    for (let i = 0; i < generalExercises.childrenExercise.length; i++) {
+        if (generalExercises.childrenExercise[i].type === 'upper') {
+            upperBody.push(generalExercises.childrenExercise[i]);
+        } else if (generalExercises.childrenExercise[i].type === 'lower') {
+            lowerBody.push(generalExercises.childrenExercise[i]);
+        } else {
+            fullBody.push(generalExercises.childrenExercise[i]);
+        }
+    }
+
     return (
         <Layout>
             <SEO title={generalExercises.fields.title} description={generalExercises.description} />
             <div>
                 <h1>{generalExercises.fields.title}</h1>
                 <p>{generalExercises.description}</p>
-                <ExercisesSection headerText="Upper Body" exercises={generalExercises.childrenExerciseUpper} />
-                <ExercisesSection headerText="Lower Body" exercises={generalExercises.childrenExerciseLower} />
+                <ExercisesSection headerText="Full Body" exercises={fullBody} />
+                <ExercisesSection headerText="Upper Body" exercises={upperBody} />
+                <ExercisesSection headerText="Lower Body" exercises={lowerBody} />
             </div>
         </Layout>
     )
@@ -27,15 +42,12 @@ export const query = graphql`
             fields {
                 title
             }
-            childrenExerciseUpper {
+            childrenExercise {
                 title
+                stillUrl
                 gifUrl
                 description
-            }
-            childrenExerciseLower {
-                title
-                gifUrl
-                description
+                type
             }
         }
     }

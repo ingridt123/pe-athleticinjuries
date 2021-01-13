@@ -1,0 +1,28 @@
+/* Source: https://github.com/benwiley4000/react-gif-player/blob/master/src/GifPlayer.scss */
+.gifPlayer {
+    display: inline-block;
+    position: relative;
+    user-select: none;
+}
+
+.gifButton {
+    background-color: rgba(0,0,0,0.5);
+    border: 2px dashed #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.5); 
+    color: #fff;
+    cursor: pointer;
+    font-size: 24px;
+    left: 50%;
+    opacity: 0.5;
+    padding: 14px 10px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    transition: transform 0.4s, opacity 0.4s;
+}
+
+.gifButton:hover {
+    background-color: rgba(0,0,0,0.7);
+    box-shadow: 0 0 0 3px rgba(0,0,0,0.5);
+}

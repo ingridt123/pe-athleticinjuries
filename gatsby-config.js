@@ -65,6 +65,7 @@ module.exports = {
                 map: doc => ({
                   title: doc.title,
                   gifUrl: doc.gifUrl,
+                  stillUrl: doc.stillUrl,
                   description: doc.description,
                 }),
               },
@@ -74,6 +75,7 @@ module.exports = {
                 map: doc => ({
                   title: doc.title,
                   gifUrl: doc.gifUrl,
+                  stillUrl: doc.stillUrl,
                   description: doc.description,
                 }),
               },
@@ -83,6 +85,7 @@ module.exports = {
                 map: doc => ({
                   title: doc.title,
                   gifUrl: doc.gifUrl,
+                  stillUrl: doc.stillUrl,
                   description: doc.description,
                 }),
               },
@@ -93,24 +96,18 @@ module.exports = {
             collection: `general`,
             map: doc => ({
               description: doc.description,
+              fullBody: doc.fullBody,
             }),
             subCollections: [
               {
-                type: `ExerciseUpper`,
-                collection: `upper`,
+                type: `Exercise`,
+                collection: `exercises`,
                 map: doc => ({
                   title: doc.title,
                   gifUrl: doc.gifUrl,
+                  stillUrl: doc.stillUrl,
                   description: doc.description,
-                })
-              },
-              {
-                type: `ExerciseLower`,
-                collection: `lower`,
-                map: doc => ({
-                  title: doc.title,
-                  gifUrl: doc.gifUrl,
-                  description: doc.description,
+                  type: doc.type,
                 })
               },
             ]

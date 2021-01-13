@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { DropdownButton, Dropdown } from 'react-bootstrap'
+import { DropdownButton } from 'react-bootstrap'
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { FaBars } from "@react-icons/all-files/fa/FaBars"
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes"
@@ -31,7 +31,7 @@ export default function Layout({ children }) {
                         title
                     }
                 }
-                allBodyPart(sort: {fields: id}) {
+                allBodyPart(sort: {fields: fields___title}) {
                     edges {
                         node {
                             id
@@ -111,6 +111,18 @@ export default function Layout({ children }) {
         }
     }
 
+    // function signInWithEmailPassword(email, password) {
+    //     firebase.auth().signInWithEmailAndPassword(email, password)
+    //         .then((user) => {
+    //             // Signed in 
+    //             // ...
+    //         })
+    //         .catch((error) => {
+    //             // var errorCode = error.code;
+    //             // var errorMessage = error.message;
+    //         });
+    // }
+
     return (
         <div id={styles.container}>
             <header id={styles.header}>
@@ -125,9 +137,10 @@ export default function Layout({ children }) {
                                     onMouseLeave={hoverOff.bind(this)}
                                     show={dropdown === dropdownTitles[0]}>
                         {generalPages.map( gp => {
-                            return <Link to={gp.href} key={gp.title} show={dropdown === dropdownTitles[0]}>
-                                        {gp.title}
-                                    </Link>
+                            if (dropdown === dropdownTitles[0]) {
+                                return <Link to={gp.href} key={gp.title}>{gp.title}</Link>
+                            }
+                            return <></>
                         })}
                     </DropdownButton>
                     <DropdownButton title="Upper Body" className={styles.dropdown}
@@ -136,7 +149,7 @@ export default function Layout({ children }) {
                                     show={dropdown === dropdownTitles[1]}>
                         {data.allBodyPart.edges.map( bp => {
                             if (bp.node.type === "upper") {
-                                return <Link to={"/" + bp.node.id} key={bp.node.id} show={dropdown === dropdownTitles[2]}>
+                                return <Link to={"/" + bp.node.id} key={bp.node.id}>
                                             {bp.node.fields.title}
                                        </Link>
                             }
@@ -149,7 +162,7 @@ export default function Layout({ children }) {
                                     show={dropdown === dropdownTitles[2]}>
                         {data.allBodyPart.edges.map( bp => {
                             if (bp.node.type === "lower") {
-                                return <Link to={"/" + bp.node.id} key={bp.node.id} show={dropdown === dropdownTitles[1]}>
+                                return <Link to={"/" + bp.node.id} key={bp.node.id}>
                                             {bp.node.fields.title}
                                        </Link>
                             }

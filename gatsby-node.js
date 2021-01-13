@@ -1,4 +1,5 @@
 const path = require(`path`)
+// console.log()
 
 exports.onCreateNode = ({ node, actions }) => {
     const { createNodeField } = actions
