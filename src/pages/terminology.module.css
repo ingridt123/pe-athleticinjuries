@@ -1,0 +1,24 @@
+.description {
+    margin-bottom: 1.6875rem;
+}
+
+.anatomyContainer {
+    height: 500px;
+    width: 300px;
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+#anatomyImg {
+    height: 400px;
+}
+
+#blankImg {
+    height: 500px;
+    width: 300px;
+    position: absolute;
+    z-index: 4;
+    /* border: 0; */
+}

@@ -6,7 +6,7 @@ import Layout from '../components/layout'
 import ExercisesSection from '../components/exercises-section'
 
 // template for body part pages
-// TODO side bar to jump to headings
+// TODO side bar to jump to headings?
 // description, stretching, strengthening, myofascial release
 // gif with description below
 

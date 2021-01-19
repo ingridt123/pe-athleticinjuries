@@ -1,0 +1,14 @@
+.container {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.textContainer {
+    padding: 8px;
+    padding-left: 20px;
+    margin: 5px 0;
+}
+
+.textTitle {
+    font-weight: bold;
+}

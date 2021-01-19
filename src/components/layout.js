@@ -1,12 +1,17 @@
 import React, { useState } from 'react'
 import { DropdownButton } from 'react-bootstrap'
 import { useStaticQuery, Link, graphql } from "gatsby"
+import firebase from "gatsby-plugin-firebase"
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { FaSignOutAlt } from "@react-icons/all-files/fa/FaSignOutAlt"
 import { FaBars } from "@react-icons/all-files/fa/FaBars"
 import { FaTimes } from "@react-icons/all-files/fa/FaTimes"
 import { FaCaretDown } from "@react-icons/all-files/fa/FaCaretDown"
 
+import SignInBox from "./sign-in"
 import styles from "./layout.module.css"
-import favicon from "../images/icon.png"
+import favicon from "../images/favicon/icon.png"
+import { signOut } from '../utils/firebase'
 
 // container with header
 // title
@@ -17,11 +22,14 @@ import favicon from "../images/icon.png"
 // TODO: add change size
 // TODO: add change language
 // TODO: add top button?
-export default function Layout({ children }) {
+export default function Layout({ children, homePage=false }) {
     // const [mobile, setMobile] = useState(window.innerWidth < MOBILE_WIDTH);
     // useEffect(() => {
     //     window.addEventListener('resize', () => {setMobile(window.innerWidth < MOBILE_WIDTH);});
     // }, [])
+
+    const [user, loading, error] = useAuthState(firebase.auth());
+    // const [user, loading, error] = useAuthState(firebase);
 
     const data = useStaticQuery(
         graphql`
@@ -56,10 +64,10 @@ export default function Layout({ children }) {
             title: "Stretches",
             href: "/stretches",
         },
-        {
-            title: "Activation",
-            href: "/activation",
-        },
+        // {
+        //     title: "Activation",
+        //     href: "/activation",
+        // },
         {
             title: "Warm Up",
             href: "/warm-up",
@@ -111,18 +119,12 @@ export default function Layout({ children }) {
         }
     }
 
-    // function signInWithEmailPassword(email, password) {
-    //     firebase.auth().signInWithEmailAndPassword(email, password)
-    //         .then((user) => {
-    //             // Signed in 
-    //             // ...
-    //         })
-    //         .catch((error) => {
-    //             // var errorCode = error.code;
-    //             // var errorMessage = error.message;
-    //         });
-    // }
+    function signOutMobileMenu() {
+        signOut();
+        closeMobileMenu();
+    }
 
+    // return <SignInBox />;
     return (
         <div id={styles.container}>
             <header id={styles.header}>
@@ -151,7 +153,7 @@ export default function Layout({ children }) {
                             if (bp.node.type === "upper") {
                                 return <Link to={"/" + bp.node.id} key={bp.node.id}>
                                             {bp.node.fields.title}
-                                       </Link>
+                                    </Link>
                             }
                             return <></>
                         })}
@@ -164,11 +166,14 @@ export default function Layout({ children }) {
                             if (bp.node.type === "lower") {
                                 return <Link to={"/" + bp.node.id} key={bp.node.id}>
                                             {bp.node.fields.title}
-                                       </Link>
+                                    </Link>
                             }
                             return <></>
                         })}
                     </DropdownButton>
+                    <FaSignOutAlt id={styles.signOut} 
+                                  className={user ? styles.signOutActive : styles.signOutInactive} 
+                                  onClick={signOut.bind(this)} title="Sign Out" />
                 </ul>
                 {/* MOBILE VERSION (Inspired by https://www.youtube.com/watch?v=T2MhVxJxsL0) */}
                 <div id={styles.mobileMenu_icon} onClick={handleMobileMenu.bind(this)}>
@@ -218,10 +223,19 @@ export default function Layout({ children }) {
                                     return <></>
                                 })}
                         </li>
+                        <li>
+                            <h3 className={user ? styles.signOutActive : styles.signOutInactive}
+                                onClick={signOutMobileMenu.bind(this)} >
+                                Sign Out
+                            </h3>
+                        </li>
                     </ul>
                 </div>
             : <></>}
-            {children}
+            {(homePage || user) ?
+                children :
+                <SignInBox />
+            }
         </div>
-    )
+    );
 }

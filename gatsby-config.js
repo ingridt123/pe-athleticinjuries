@@ -33,11 +33,25 @@ module.exports = {
         // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
-        icon: `src/images/icon.png`,
+        icon: `src/images/favicon/icon.png`,
       },
     },
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: process.env.GATSBY_FIREBASE_APIKEY,
+          authDomain: process.env.GATSBY_FIREBASE_AUTHDOMAIN,
+          databaseURL: process.env.GATSBY_FIREBASE_DATABASEURL,
+          projectId: process.env.GATSBY_FIREBASE_PROJECTID,
+          storageBucket: process.env.GATSBY_FIREBASE_STORAGEBUCKET,
+          messagingSenderId: process.env.GATSBY_FIREBASE_MESSAGINGSENDERID,
+          appId: process.env.GATSBY_FIREBASE_APPID,
+        },
+      }
+    },
     {
       resolve: `@martinreiche/gatsby-firestore`,
       options: {
@@ -108,6 +122,23 @@ module.exports = {
                   stillUrl: doc.stillUrl,
                   description: doc.description,
                   type: doc.type,
+                })
+              },
+              {
+                type: `MovementTerm`,
+                collection: `movement`,
+                map: doc => ({
+                  title: doc.title,
+                  gifUrl: doc.gifUrl,
+                  stillUrl: doc.stillUrl,
+                  description: doc.description,
+                })
+              },
+              {
+                type: `DirectionTerm`,
+                collection: `direction`,
+                map: doc => ({
+                  data: doc.data,
                 })
               },
             ]

@@ -1,12 +1,15 @@
 import React from 'react'
 
 import GifPlayer from './gif-player'
+import blank from "../images/blank-na.png"
 import styles from "./exercises-section.module.css"
 
-// TODO: use react-gif-player
 const Exercise = ({ title, stillUrl, gifUrl, description }) => (
     <div className={styles.exerciseContainer}>
-        <GifPlayer stillUrl={stillUrl} gifUrl={gifUrl} alt={title} className={styles.exerciseGif} />
+        {gifUrl ? 
+        <GifPlayer stillUrl={stillUrl} gifUrl={gifUrl} alt={title} className={styles.exerciseGif} /> :
+        <img src={stillUrl} />
+        }
         <div>
             <p className={styles.exerciseTitle}>{title}</p>
             <p className={styles.exerciseDescription}>{description}</p>
@@ -29,7 +32,9 @@ export default function ExercisesSection({ headerText, exercises }) {
                 <h2>{headerText}</h2>
                 {exercises.map( e  => {
                     if (e.title !== null) {
-                        return <Exercise title={e.title} stillUrl={e.stillUrl} gifUrl={e.gifUrl}
+                        return <Exercise title={e.title} 
+                                         stillUrl={e.stillUrl ? e.stillUrl : blank}
+                                         gifUrl={e.gifUrl}
                                          description={e.description} />
                     }
                     return <></>

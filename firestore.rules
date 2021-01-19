@@ -2,7 +2,12 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /{document=**} {
-      allow read, write: if false;
+    	function validEmail() {
+      	let email = request.auth.token.email;
+      	return email.matches('.*@cms.claremont.edu|.*@hmc.edu|.*@claremontmckenna.edu|.*@scippscollege.edu|.*@pitzer.edu|.*@pomona.edu');
+      }
+    
+      allow read, write: if request.auth != null && validEmail()
     }
   }
 }

@@ -1,0 +1,9 @@
+#anatomyCanvas {
+    /* height: inherit;
+    width: inherit; */
+    height: 500px;
+    width: 300px;
+    position: absolute;
+    display: block;
+    z-index: 2;
+}

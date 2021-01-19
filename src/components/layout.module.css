@@ -81,6 +81,21 @@
     padding-left: 4px;
 }
 
+#signOut {
+    font-size: 25px;
+    vertical-align: text-bottom;
+    margin-left: 10px;
+}
+
+.signOutActive {
+    cursor: pointer;
+}
+
+.signOutInactive {
+    color: hsla(0,0%,0%,0.2);
+    cursor: not-allowed;
+}
+
 /* MOBILE MENU */
 
 #mobileMenu_icon {
@@ -104,8 +119,12 @@
     display: none;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 880px) {
     #dropdowns .dropdown {
+        display: none;
+    }
+
+    #signOut {
         display: none;
     }
 
@@ -141,5 +160,11 @@
     
     .dropdownMobile_header:hover {
         color: var(--hover);
+    }
+
+    .dropdownMobile_signOutHeader {
+        width: 100%;
+        margin: 2rem 0 0 0;
+        padding: 20px 0;
     }
 }

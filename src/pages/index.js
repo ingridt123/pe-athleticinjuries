@@ -1,7 +1,7 @@
 import React from 'react'
-import Layout from '../components/layout'
 import { Link, graphql } from 'gatsby'
 
+import Layout from '../components/layout'
 import SEO from "../components/seo"
 import ImageMapper from "../components/image-mapper"
 import styles from "./index.module.css"
@@ -20,6 +20,7 @@ const ListLink = props => (
 )
 
 export default function Home({ data }) {
+    
     const ANATOMY_MAP = {
         name: "anatomy-map",
         areas: [
@@ -41,7 +42,7 @@ export default function Home({ data }) {
     }
 
     return (
-        <Layout>
+        <Layout homePage={true}>
             <SEO title="Home" description={data.site.siteMetadata.description} />
             <h1>Home</h1>
             <div className={styles.row}>
@@ -50,16 +51,17 @@ export default function Home({ data }) {
                     <ul className={styles.listLinks}>
                         <ListLink to="/terminology">Terminology</ListLink>
                         <ListLink to="/stretches">Stretches</ListLink>
-                        <ListLink to="/activation">Activation</ListLink>
+                        {/* <ListLink to="/activation">Activation</ListLink> */}
                         <ListLink to="/warm-up">Warm Up</ListLink>
                         <ListLink to="/cool-down">Cool Down</ListLink>
                     </ul>
-                    <p>Credit to CMS athletic trainers.</p>
+                    <p>Credit to CMS athletic trainers,  instructors of PE 090A <i>Prevention of Athletic Injuries</i>.</p>
                     <br />
                     <p>NOTE: Please make sure that if any of these exercises cause pain or discomfort to discontinue that activity and seek professional help for proper instructions on the movement.</p>
                 </div>
                 <div className={styles.column}>
-                    <ImageMapper src={musculoskeletal} map={ANATOMY_MAP} name="anatomy-map" orgWidth={382} orgHeight={737} height={400}/>
+                    <ImageMapper src={musculoskeletal} map={ANATOMY_MAP} name="anatomy-map" home={true}
+                                 orgWidth={382} orgHeight={737} height={400}/>
 
                     <a href="https://www.kenhub.com/en/library/anatomy/the-musculoskeletal-system"
                        className={styles.source}>Source: KenHub</a>
