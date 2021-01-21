@@ -33,6 +33,7 @@ function signIn(provider, data) {
             const userEmail = result.user.email;
             if (!checkValidEmail(userEmail, data)) {
                 signOut();
+                alert("Invalid email.");
                 throw "Invalid email";
             }
         }).catch((error) => {

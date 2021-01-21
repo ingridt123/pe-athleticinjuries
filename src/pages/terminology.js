@@ -13,7 +13,10 @@ import styles from "./terminology.module.css"
 
 export default function Terminology({ data }) {
 
-    const [anatomyText, setAnatomyText] = useState([]);
+    const [anatomyText, setAnatomyText] = useState([{
+        title: "Hover over the terms on the diagram to learn more!",
+        description: ""
+    }]);
 
     const ANATOMY_ARROWS = [
         {
