@@ -26,7 +26,6 @@ export function drawText(context, coords, text, font, textAlign, fillColor) {
 export function getArrowPoints(coords) {
     const [botX, botY, topX, topY] = coords;
     const totalHeight = Math.sqrt((topY - botY) ** 2 + (topX - botX) ** 2);
-    const bodyHeight = 0.6 * totalHeight;
     const bodyWidth = 0.3 * totalHeight;
     const arrowHeight = 0.4 * totalHeight;
     const arrowWidth = 1.2 * totalHeight;

@@ -34,7 +34,6 @@ export default function ImageMapper({ orgWidth, orgHeight, height, src, name, ma
 
     // Adapted from https://github.com/coldiary/react-image-mapper/blob/master/src/ImageMapper.js
     function hoverOn(name, coords, altCoords, shape, fillColor="rgba(255, 255, 255, 0.5)") {
-        console.log("hover on", shape, name);
         context = canvasRef.current.getContext('2d');
         if (!altCoords) {
             switch (shape) {

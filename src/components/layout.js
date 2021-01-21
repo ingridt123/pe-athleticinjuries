@@ -9,6 +9,7 @@ import { FaTimes } from "@react-icons/all-files/fa/FaTimes"
 import { FaCaretDown } from "@react-icons/all-files/fa/FaCaretDown"
 
 import SignInBox from "./sign-in"
+import { useAuthState_build } from "../utils/firebase"
 import styles from "./layout.module.css"
 import favicon from "../images/favicon/icon.png"
 import { signOut } from '../utils/firebase'
@@ -28,8 +29,10 @@ export default function Layout({ children, homePage=false }) {
     //     window.addEventListener('resize', () => {setMobile(window.innerWidth < MOBILE_WIDTH);});
     // }, [])
 
-    const [user, loading, error] = useAuthState(firebase.auth());
-    // const [user, loading, error] = useAuthState(firebase);
+    // Develop
+    // const [user, loading, error] = useAuthState(firebase.auth());
+    // Build
+    const [user, loading, error] = useAuthState_build(firebase);
 
     const data = useStaticQuery(
         graphql`

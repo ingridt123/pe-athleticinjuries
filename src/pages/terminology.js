@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 import Layout from '../components/layout'
 import ExercisesSection from '../components/exercises-section'
@@ -139,11 +139,11 @@ export default function Terminology({ data }) {
                 <p className={styles.description}>All of these terms are related to the standard anatomical position, in which the body stands erect, the limbs are extended, and the palms of the hand face forward.</p>
                 <div className={styles.container}>
                     <div className={styles.anatomyContainer}>
-                        <img id={styles.anatomyImg} src={musculoskeletal} />
+                        <img id={styles.anatomyImg} src={musculoskeletal} alt="Anatomy Terms" />
                         <AnatomyCanvas width={600} height={1000}
                                     arrows={ANATOMY_ARROWS} circles={ANATOMY_CIRCLES}
                                     textFont={options} />
-                        <img id={styles.blankImg} src={blank} useMap="#anatomy-map"/>
+                        <img id={styles.blankImg} src={blank} alt="Blank" useMap="#anatomy-map"/>
                         <ImageMapper src={blank} map={ANATOMY_MAP} name="anatomy-map"
                                      hoverAction={updateAnatomyText}
                                      lineWidth={0} orgWidth={300} orgHeight={500} />

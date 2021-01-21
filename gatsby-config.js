@@ -143,6 +143,14 @@ module.exports = {
                 })
               },
             ]
+          },
+          {
+            type: `User`,
+            collection: `users`,
+            map: doc => ({
+              email: doc.email,
+            }),
+            subCollections: []
           }
         ],
       },

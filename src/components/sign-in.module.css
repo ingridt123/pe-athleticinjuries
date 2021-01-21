@@ -1,7 +1,7 @@
 #container {
     text-align: center;
     position: relative;
-    width: 400px;
+    width: 500px;
     padding: 50px;
     /* padding-top: 60px; */
     margin: 100px auto;
@@ -33,7 +33,7 @@
     color: red;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 600px) {
     #container {
         width: 100%;
     }
