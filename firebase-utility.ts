@@ -145,16 +145,11 @@ export const generateDocId = (
 
 export const updateDocId = async (collectionId: string = "body-parts") => {
     const colRef = await firestore.collection(collectionId).get();
-    // console.log(bp);
-    // return col.docs;
     for await (const doc of colRef.docs) {
-        console.log(doc.id);
         const subcollections = await firestore.doc(collectionId + "/" + doc.id).getCollections();
         for await (const subcollectionRef of subcollections) {
             const subdocs = await subcollectionRef.get();
             for await (const sd of subdocs.docs) {
-                console.log(subcollectionRef.path)
-                console.log(sd.id);
                 if (sd.id.length <= 3) {
                     const id = generateDocId(20 - (sd.id.length+1))
                     moveDoc(subcollectionRef.path, sd.id, subcollectionRef.path, sd.id + "_" + id)

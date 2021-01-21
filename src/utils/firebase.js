@@ -14,7 +14,6 @@ export function signInWithGoogle(setInvalidEmail) {
         .signInWithPopup(provider)
         .then((result) => {
             const userEmail = result.user.email;
-            console.log(userEmail);
             if (!checkValidEmail(userEmail)) {
                 signOut();
                 throw "Invalid email";

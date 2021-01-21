@@ -1,5 +1,9 @@
-.container {
+.containerHome {
     position: relative;
+}
+
+.containerOverlay {
+    position: absolute;
 }
 
 .imageMap {

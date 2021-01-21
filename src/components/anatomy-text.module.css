@@ -1,6 +1,7 @@
 .container {
-    display: inline-block;
+    display: inline-flex;
     vertical-align: top;
+    flex-direction: column;
 }
 
 .textContainer {
@@ -11,4 +12,12 @@
 
 .textTitle {
     font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    .textContainer {
+        padding: 0;
+        margin: 5px;
+        margin-top: 10px;
+    }
 }

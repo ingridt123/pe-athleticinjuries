@@ -138,6 +138,7 @@ module.exports = {
                 type: `DirectionTerm`,
                 collection: `direction`,
                 map: doc => ({
+                  titles: doc.titles,
                   data: doc.data,
                 })
               },

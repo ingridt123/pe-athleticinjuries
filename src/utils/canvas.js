@@ -15,8 +15,9 @@ export function drawCircle(context, coords, fillColor) {
     context.fill();
 }
 
-export function drawText(context, coords, text, textAlign, fillColor) {
+export function drawText(context, coords, text, font, textAlign, fillColor) {
     const [x,y] = coords;
+    context.font = font;
     context.textAlign = textAlign;
     context.fillStyle = fillColor;
     context.fillText(text, x, y);

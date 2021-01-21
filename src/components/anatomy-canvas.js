@@ -14,19 +14,16 @@ export default function AnatomyCanvas({ width, height, arrows, circles, textFont
         canvas.width = width;
         canvas.height = height;
         context.scale(2, 2);
-        context.font = "12px " + textFont.bodyFontFamily[0];
+        context.globalAlpha = 0.6;
         
         for (let i = 0; i < arrows.length; i++) {
-            context.save();
-            context.globalAlpha = 0.7;
             drawArrow(context, arrows[i].coords, arrows[i].fillColor);
-            context.restore();
             if (arrows[i].text) {
-                drawText(context, arrows[i].textCoords, arrows[i].text, arrows[i].textAlign, arrows[i].fillColor);
+                drawText(context, arrows[i].textCoords, arrows[i].text, "12px " + textFont.bodyFontFamily[0], arrows[i].textAlign, arrows[i].fillColor);
             }
         }
         for (let i = 0; i < circles.length; i++) {
-            context.globalAlpha = 0.7;
+            // context.globalAlpha = 0.7;
             drawCircle(context, circles[i].coords, circles[i].fillColor);
         }
     }, []);
